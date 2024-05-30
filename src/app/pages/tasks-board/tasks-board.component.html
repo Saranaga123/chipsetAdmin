@@ -1,0 +1,36 @@
+<app-header style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 5vh;float: left;width: 100%;"></app-header>
+<div style="height:3vh;float: left; width: 100%;background-color: rgb(134, 134, 134);padding-left: 250px; color:white; font-weight: bold;">
+  : My Tasks/
+</div>
+<div style="height:90vh;float: left; width: 100%;background-color: rgb(194, 194, 194);">
+  <div style="background-color:  rgb(134, 134, 134); float: left;width: 250px;height:90vh;padding-top: 10px;">
+    <div class="menuitem"  ><img src = "../../../assets/img/empty.png" style="width:22px">My Tasks</div>
+    <div class="menuitem" (click)="openOrders()" ><span *ngIf="!openOrdersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openOrdersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Orders</div>
+      <div [ngClass]="{'subwrapper1open': openOrdersmenu, 'subwrapper1': !openOrdersmenu}" >
+        <div class="submenuitem"  >Pending Orders</div>
+        <div class="submenuitem"  >New Order</div>
+        <div class="submenuitem"  >Orders Extract</div>
+      </div>
+    <div class="menuitem"  (click)="openProducts()" ><span *ngIf="!openProductsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openProductsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Products</div>
+      <div [ngClass]="{'subwrapper2open': openProductsmenu, 'subwrapper2': !openProductsmenu}">
+        <div class="submenuitem"  >Add Product</div>
+        <div class="submenuitem"  >Edit Product</div>
+        <div class="submenuitem"  >Products Extract</div>
+      </div>
+    <div class="menuitem"  (click)="openUsers()" ><span *ngIf="!openUsersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openUsersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Users</div>
+      <div [ngClass]="{'subwrapper3open': openUsersmenu, 'subwrapper3': !openUsersmenu}">
+        <div class="submenuitem"  >User Create</div>
+        <div class="submenuitem"  >User Update/Delete</div>
+        <div class="submenuitem"  >Users Extract</div>
+      </div>
+    <div class="menuitem"  (click)="openReports()" ><span *ngIf="!openReportsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openReportsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Reports</div>
+      <div [ngClass]="{'subwrapper4open': openReportsmenu, 'subwrapper4': !openReportsmenu}">
+        <div class="submenuitem"  >Generate Invoice</div>
+        <div class="submenuitem"  >Generate Company Invoice</div>
+        <div class="submenuitem"  >Filters</div>
+      </div>
+  </div>
+
+
+</div>
+<app-footer style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 2vh;float: left;width: 100%;"></app-footer>

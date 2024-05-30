@@ -1,0 +1,34 @@
+.background-div {
+  width: 100%;
+  height: 5vh;
+  background-color: rgb(90, 90, 90);
+  background-repeat: repeat; /* This will repeat the image both horizontally and vertically */
+}
+.myrow{
+  width: 100%;
+}
+.inputCom{
+  background-color: white;
+}
+.inputCom:hover{
+  background-color: rgb(192, 192, 192);
+}
+button{
+  border-radius: 10px;
+  padding: 10px 30px 10px 30px ;
+  font-weight: bold;
+  background-color:black ;
+  color: white;
+  width: 30%;
+  margin-left: 35%;
+}
+button:hover{
+    border-radius: 10px;
+    padding: 10px 30px 10px 30px ;
+    font-weight: bold;
+    background-color:rgb(27, 27, 27) ;
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+    filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
+}

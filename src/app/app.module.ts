@@ -17,12 +17,20 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbDateAdapter, NgbDateNativeAdapter, NgbModule, } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TasksBoardComponent } from './pages/tasks-board/tasks-board.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    LoginComponent,
+    FooterComponent,
+    HeaderComponent,
+    TasksBoardComponent
   ],
   imports: [
     BrowserModule,

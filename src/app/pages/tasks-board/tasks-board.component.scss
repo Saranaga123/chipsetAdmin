@@ -1,0 +1,25 @@
+.menuitem{
+  background-color: rgb(134, 134, 134); float: left;width: 250px;height:30px; padding: 0px 20px 2px 00px; color:white;cursor: pointer;
+}
+.menuitem:hover{
+  background-color: rgb(116, 116, 116);
+}
+.submenuitem{
+  background-color: rgb(134, 134, 134); float: left;width: 250px;height:30px; padding: 0px 20px 2px 40px; color:white;cursor: pointer;
+}
+.submenuitem:hover{
+  background-color: rgb(116, 116, 116);
+}
+
+.subwrapper1{
+  display: none;
+}
+.subwrapper2{
+  display: none;
+}
+.subwrapper3{
+  display: none;
+}
+.subwrapper4{
+  display: none;
+}
