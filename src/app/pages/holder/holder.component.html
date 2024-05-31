@@ -36,7 +36,8 @@
       </div>
   </div>
   <div style="background-color:  rgb(182, 182, 182); float: left;width: 90%;height:90vh;">
-    <app-tasks-board></app-tasks-board>
+    <app-tasks-board *ngIf="selectMYTask"></app-tasks-board>
+    <app-create-task *ngIf="selectCreateTasks"></app-create-task>
   </div>
 </div>
 <app-footer style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 2vh;float: left;width: 100%;"></app-footer>

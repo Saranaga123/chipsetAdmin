@@ -34,6 +34,7 @@ import { UsersExtractComponent } from './pages/users-extract/users-extract.compo
 import { GenerateInvoiceComponent } from './pages/generate-invoice/generate-invoice.component';
 import { GenerateCompanyInvoiceComponent } from './pages/generate-company-invoice/generate-company-invoice.component';
 import { FiltersComponent } from './pages/filters/filters.component';
+import { CreateTaskComponent } from './pages/create-task/create-task.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { FiltersComponent } from './pages/filters/filters.component';
     UsersExtractComponent,
     GenerateInvoiceComponent,
     GenerateCompanyInvoiceComponent,
-    FiltersComponent
+    FiltersComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,

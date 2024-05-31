@@ -19,8 +19,12 @@ export class TasksBoardComponent {
     private spinner: NgxSpinnerService,
     private modalService : NgbModal,
   ) {
-    // this.spinner.show()
+    this.spinner.show()
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 1000);
   }
+
   ngOnInit(): void {
 
   }
