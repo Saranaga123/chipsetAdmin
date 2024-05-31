@@ -1,25 +1,28 @@
-.menuitem{
-  background-color: rgb(134, 134, 134); float: left;width: 250px;height:30px; padding: 0px 20px 2px 00px; color:white;cursor: pointer;
+.Orbit{
+  width: 100%;
+  height: 90vh;
+  overflow-y: auto;
+  padding: 20px 20px 20px 20px;
 }
-.menuitem:hover{
-  background-color: rgb(116, 116, 116);
+button{
+  border-radius: 10px;
+  padding: 4px 10px 4px 10px ;
+  font-weight: bold;
+  background-color:black ;
+  color: white;
+  width: 30%;
+  margin-left: 35%;
 }
-.submenuitem{
-  background-color: rgb(134, 134, 134); float: left;width: 250px;height:30px; padding: 0px 20px 2px 40px; color:white;cursor: pointer;
+button:hover{
+    border-radius: 10px;
+    padding: 4px 10px 4px 10px ;
+    font-weight: bold;
+    background-color:rgb(27, 27, 27) ;
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+    filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
 }
-.submenuitem:hover{
-  background-color: rgb(116, 116, 116);
-}
-
-.subwrapper1{
-  display: none;
-}
-.subwrapper2{
-  display: none;
-}
-.subwrapper3{
-  display: none;
-}
-.subwrapper4{
-  display: none;
+th{
+  padding: 5px;
 }

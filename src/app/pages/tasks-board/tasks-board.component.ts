@@ -13,6 +13,7 @@ export class TasksBoardComponent {
   openProductsmenu:boolean=false
   openUsersmenu:boolean=false
   openReportsmenu:boolean=false
+  UserName:string = "ALIENADMIN-LEVEL0"
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,

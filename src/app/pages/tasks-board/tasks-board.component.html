@@ -1,36 +1,129 @@
-<app-header style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 5vh;float: left;width: 100%;"></app-header>
-<div style="height:3vh;float: left; width: 100%;background-color: rgb(134, 134, 134);padding-left: 250px; color:white; font-weight: bold;">
-  : My Tasks/
-</div>
-<div style="height:90vh;float: left; width: 100%;background-color: rgb(194, 194, 194);">
-  <div style="background-color:  rgb(134, 134, 134); float: left;width: 250px;height:90vh;padding-top: 10px;">
-    <div class="menuitem"  ><img src = "../../../assets/img/empty.png" style="width:22px">My Tasks</div>
-    <div class="menuitem" (click)="openOrders()" ><span *ngIf="!openOrdersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openOrdersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Orders</div>
-      <div [ngClass]="{'subwrapper1open': openOrdersmenu, 'subwrapper1': !openOrdersmenu}" >
-        <div class="submenuitem"  >Pending Orders</div>
-        <div class="submenuitem"  >New Order</div>
-        <div class="submenuitem"  >Orders Extract</div>
+<div style="background-color: rgb(199, 199, 199);width: 100%;height: 90vh;">
+  <div class="Orbit">
+    <h6>Welcome User : <b>{{UserName}}</b></h6>
+    <h6>Asigned Tasks</h6>
+    <div style="background-color: rgb(255, 255, 255);width: 100%; height: 200px">
+      <div style="float: left;width: 33.3%;height: 200px;">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px; margin-top: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Task ID">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Task From">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Status">
       </div>
-    <div class="menuitem"  (click)="openProducts()" ><span *ngIf="!openProductsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openProductsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Products</div>
-      <div [ngClass]="{'subwrapper2open': openProductsmenu, 'subwrapper2': !openProductsmenu}">
-        <div class="submenuitem"  >Add Product</div>
-        <div class="submenuitem"  >Edit Product</div>
-        <div class="submenuitem"  >Products Extract</div>
+      <div style="float: left;width: 33.3%;height: 200px; ">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px; margin-top: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Task Title">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="From Date">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Task Type">
       </div>
-    <div class="menuitem"  (click)="openUsers()" ><span *ngIf="!openUsersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openUsersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Users</div>
-      <div [ngClass]="{'subwrapper3open': openUsersmenu, 'subwrapper3': !openUsersmenu}">
-        <div class="submenuitem"  >User Create</div>
-        <div class="submenuitem"  >User Update/Delete</div>
-        <div class="submenuitem"  >Users Extract</div>
+      <div style="float: left;width: 33.3%;height: 200px; ">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px; margin-top: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Assignee">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="To Date">
+        <div style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%;text-align: right;"  >
+          <button >Filter</button>
+        </div>
+
       </div>
-    <div class="menuitem"  (click)="openReports()" ><span *ngIf="!openReportsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openReportsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Reports</div>
-      <div [ngClass]="{'subwrapper4open': openReportsmenu, 'subwrapper4': !openReportsmenu}">
-        <div class="submenuitem"  >Generate Invoice</div>
-        <div class="submenuitem"  >Generate Company Invoice</div>
-        <div class="submenuitem"  >Filters</div>
-      </div>
+
+    </div>
+    <table style="width: 100%;margin-top: 20px;"  >
+      <tr style="width: 100% ; background-color: rgb(236, 236, 236);">
+        <th style="width: 10% ;">
+          Task ID
+        </th>
+        <th  style="width: 20% ;">
+          Task Title
+        </th>
+        <th  style="width: 15% ;">
+          Assignee
+        </th>
+        <th style="width: 15% ;">
+          Task From
+        </th>
+        <th style="width: 35% ;">
+          Task Description
+        </th>
+        <th style="width: 5% ;">
+          Action
+        </th>
+      </tr>
+      <tr style="width: 100% ; background-color: rgb(236, 236, 236);">
+        <td  colspan="6">
+          <div style="width: 100%;  overflow-y: auto; max-height: 50vh;">
+            <table style="width: 100%;">
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;width: 10% ;">0000</td>
+                <td style="width: 20% ;">Develop My task</td>
+                <td style="width: 15% ;">ADMIN0</td>
+                <td style="width: 15% ;">THECREATOR</td>
+                <td style="width: 35% ;">COMPLETE ASAP</td>
+                <td style="width: 5% ;"></td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0001</td>
+                <td>Create other components</td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td>DONE</td>
+                <td>DONE</td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0002</td>
+                <td>Bind components</td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td>Bind components with menu - TODO</td>
+                <td></td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0003</td>
+                <td>ADD font awsome </td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td>User font awsome latest version plz - TODO</td>
+                <td></td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0004</td>
+                <td>Complete Action section</td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td>View / Update / Delete</td>
+                <td></td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0005</td>
+                <td>Add spinner </td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td>ADD atom spinner</td>
+                <td>DONE</td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0006</td>
+                <td>Add Create task</td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td style="overflow-x: auto;">ADD create task menu item and component</td>
+                <td>DONE</td>
+              </tr>
+              <tr style="border: 1px solid gray;background-color: rgb(255, 255, 255);;">
+                <td style="padding-left: 10px;">0007</td>
+                <td>Auto Menu</td>
+                <td>ADMIN0</td>
+                <td>THECREATOR</td>
+                <td style="overflow-x: auto;">Auto select opened component from menu</td>
+                <td></td>
+              </tr>
+
+
+
+
+
+            </table>
+          </div>
+
+        </td>
+      </tr>
+      <tr style="width: 100%">
+      </tr>
+    </table>
   </div>
-
-
 </div>
-<app-footer style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 2vh;float: left;width: 100%;"></app-footer>

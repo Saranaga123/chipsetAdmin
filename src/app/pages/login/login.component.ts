@@ -20,6 +20,11 @@ export class LoginComponent {
 
   }
 login(){
-  this.router.navigate(['/mytasks']);
+  this.spinner.show()
+  setTimeout(() => {
+    this.spinner.hide()
+    this.router.navigate(['/Space']);
+  }, 1000);
+
 }
 }
