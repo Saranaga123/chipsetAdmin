@@ -1,1 +1,122 @@
-<p>pending-orders works!</p>
+<div style="background-color: rgb(199, 199, 199);width: 100%;height: 90vh;">
+  <div class="Orbit">
+    <h6>Welcome User : <b>{{UserName}}</b></h6>
+    <h6>Pending Orders</h6>
+    <div style="background-color: rgb(255, 255, 255);width: 100%; height: 200px">
+      <div style="float: left;width: 33.3%;height: 200px;">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px; margin-top: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Order ID">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="From Date">
+      </div>
+      <div style="float: left;width: 33.3%;height: 200px; ">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px; margin-top: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Customer Name">
+
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px;margin-left: 10%;margin-right: 10%;" placeholder="To Date">
+      </div>
+      <div style="float: left;width: 33.3%;height: 200px; ">
+        <input type="text" style="width: 80%; float: left; margin-bottom: 10px; margin-top: 10px;margin-left: 10%;margin-right: 10%;" placeholder="Agent Name">
+
+        <div style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%;text-align: right;"  >
+          <button >Filter</button>
+        </div>
+
+      </div>
+
+    </div>
+    <table style="width: 100%;margin-top: 20px;"  >
+      <tr style="width: 100% ; background-color: rgb(236, 236, 236);">
+        <th style="width: 10% ;">
+          Order ID
+        </th>
+        <th  style="width: 20% ;">
+          Customer Name
+        </th>
+        <th  style="width: 15% ;">
+          Price
+        </th>
+        <th style="width: 15% ;">
+          Order From
+        </th>
+        <th style="width: 33% ;">
+          Order Description
+        </th>
+        <th style="width: 7% ;">
+          Action
+        </th>
+      </tr>
+      <tr style="width: 100% ; background-color: rgb(236, 236, 236);">
+        <td  colspan="6">
+          <div style="width: 100%;  overflow-y: auto; max-height: 50vh;">
+            <table style="width: 100%;">
+
+              <tr   class="recordhover">
+                <td style="padding-left: 10px;width: 10%;padding-top: 5px;padding-bottom: 5px;">0001</td>
+                <td style="width: 20%;">Create other components</td>
+                <td style="width: 15%;">$ 1200</td>
+                <td style="width: 15%;">THECREATOR</td>
+                <td style="width: 33%;">DONE</td>
+                <td style="width: 7%;"> <i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+              <tr  class="recordhover">
+                <td style="padding-left: 10px;padding-top: 5px;padding-bottom: 5px;">0002</td>
+                <td>Bind components</td>
+                <td>$ 1200</td>
+                <td>THECREATOR</td>
+                <td>Bind components with menu - TODO</td>
+                <td><i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+              <tr  class="recordhover">
+                <td style="padding-left: 10px;padding-top: 5px;padding-bottom: 5px;">0003</td>
+                <td>ADD font awsome </td>
+                <td>$ 1200</td>
+                <td>THECREATOR</td>
+                <td>User font awsome latest version plz - TODO</td>
+                <td><i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+              <tr  class="recordhover">
+                <td style="padding-left: 10px;padding-top: 5px;padding-bottom: 5px;">0004</td>
+                <td>Complete Action section</td>
+                <td>$ 1200</td>
+                <td>THECREATOR</td>
+                <td>View / Update / Delete</td>
+                <td><i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+              <tr  class="recordhover">
+                <td style="padding-left: 10px;padding-top: 5px;padding-bottom: 5px;">0005</td>
+                <td>Add spinner </td>
+                <td>$ 1200</td>
+                <td>THECREATOR</td>
+                <td>ADD atom spinner</td>
+                <td><i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+              <tr  class="recordhover">
+                <td style="padding-left: 10px;padding-top: 5px;padding-bottom: 5px;">0006</td>
+                <td>Add Create task</td>
+                <td>$ 1200</td>
+                <td>THECREATOR</td>
+                <td style="overflow-x: auto;">ADD create task menu item and component</td>
+                <td><i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+              <tr  class="recordhover">
+                <td style="padding-left: 10px;padding-top: 5px;padding-bottom: 5px;">0007</td>
+                <td>Auto Menu</td>
+                <td>$ 1200</td>
+                <td>THECREATOR</td>
+                <td style="overflow-x: auto;">Auto select opened component from menu</td>
+                <td><i class="fa-solid fa-pen-to-square" title="edit" style="padding-left: 10px;cursor:pointer;"></i><i class="fa-regular fa-eye" title="View"style="padding-left: 10px;cursor:pointer;"></i><i class="fa-solid fa-trash" title="Delete"style="padding-left: 10px;cursor:pointer"></i></td>
+              </tr>
+
+
+
+
+
+            </table>
+          </div>
+
+        </td>
+      </tr>
+      <tr style="width: 100%">
+      </tr>
+    </table>
+  </div>
+</div>
+<app-spinner></app-spinner>

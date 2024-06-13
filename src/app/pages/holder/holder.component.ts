@@ -28,7 +28,10 @@ export class HolderComponent {
   UsersExtract:boolean=false
   GenerateInvoice:boolean=false
   GenerateCompanyInvoice:boolean=false
-  Filters:boolean=false
+  ReportFilters:boolean=false
+
+  navLevel1:string=""
+  navLevel2:string=""
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
@@ -78,11 +81,13 @@ export class HolderComponent {
         UsersExtract:false,
         GenerateInvoice:false,
         GenerateCompanyInvoice:false,
-        Filters:false,
+        ReportFilters:false,
       }
       this.openTasksmenu=true
       this.selectMYTask=true
+
     }
+    this.setNav()
   }
   resetmenu(){
     this.openTasksmenu= this.activemenuobj.openTasksmenu
@@ -103,6 +108,51 @@ export class HolderComponent {
       this.UsersExtract= this.activemenuobj.UsersExtract
       this.GenerateInvoice= this.activemenuobj.GenerateInvoice
       this.GenerateCompanyInvoice= this.activemenuobj.GenerateCompanyInvoice
+    this.setNav()
+  }
+  setNav(){
+    if (this.openTasksmenu){
+      this.navLevel1="Tasks"
+      if(this.selectMYTask){
+        this.navLevel2="My Tasks"
+      }else {
+        this.navLevel2="Create New Tasks"
+      }
+    }else if (this.openOrdersmenu){
+      this.navLevel1="Orders"
+      if(this.PendingOrders){
+        this.navLevel2="Pending Orders"
+      }else if (this.NewOrder){
+        this.navLevel2="New Order"
+      }else{
+        this.navLevel2="Orders Extract"
+      }
+    }else if (this.openProductsmenu){
+      this.navLevel1="Products"
+      if(this.AddProduct){
+        this.navLevel2="Add Product"
+      }else if (this.EditProduct){
+        this.navLevel2="Edit Product"
+      }else{
+        this.navLevel2="Products Extract"
+      }
+    }else if (this.openUsersmenu){
+      this.navLevel1="Users"
+      if(this.UserCreate){
+        this.navLevel2="User Create"
+      }else if (this.UserUpdate){
+        this.navLevel2="User Update"
+      }else{
+        this.navLevel2="Users Extract"
+      }
+    }else if (this.openReportsmenu){
+      this.navLevel1="Reports"
+      if (this.GenerateInvoice){
+        this.navLevel2="Generate Invoice"
+      }else{
+        this.navLevel2="Generate Company Invoice"
+      }
+    }
   }
   openTasks(){
     if(this.openTasksmenu){
@@ -131,11 +181,16 @@ export class HolderComponent {
       UsersExtract:false,
       GenerateInvoice:false,
       GenerateCompanyInvoice:false,
-      Filters:false,
+      ReportFilters:false,
     }
     sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
     this.activemenuobj = menuobj
-    this.resetmenu()
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
   }
   opencreateTasks(){
     let menuobj = {
@@ -157,11 +212,15 @@ export class HolderComponent {
       UsersExtract:false,
       GenerateInvoice:false,
       GenerateCompanyInvoice:false,
-      Filters:false,
+      ReportFilters:false,
     }
     sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
     this.activemenuobj = menuobj
-    this.resetmenu()
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
   }
   openOrders(){
     if(this.openOrdersmenu){
@@ -170,6 +229,96 @@ export class HolderComponent {
       this.openOrdersmenu = true
     }
   }
+  openPendingOrders(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:true,
+      openProductsmenu:false,
+      openUsersmenu:false,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:true,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+  }
+  openNewOrder(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:true,
+      openProductsmenu:false,
+      openUsersmenu:false,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:true,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+  }
+  openOrdersExtract(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:true,
+      openProductsmenu:false,
+      openUsersmenu:false,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:true,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+  }
   openProducts(){
     if(this.openProductsmenu){
       this.openProductsmenu = !this.openProductsmenu
@@ -177,12 +326,199 @@ export class HolderComponent {
       this.openProductsmenu = true
     }
   }
+  openAddProduct(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:true,
+      openUsersmenu:false,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:true,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+  openEditProduct(){
+      let menuobj = {
+        openTasksmenu:false,
+        openOrdersmenu:false,
+        openProductsmenu:true,
+        openUsersmenu:false,
+        openReportsmenu:false,
+        selectMYTask:false,
+        selectCreateTasks:false,
+        PendingOrders:false,
+        NewOrder:false,
+        OrdersExtract:false,
+        AddProduct:false,
+        EditProduct:true,
+        ProductsExtract:false,
+        UserCreate:false,
+        UserUpdate:false,
+        UsersExtract:false,
+        GenerateInvoice:false,
+        GenerateCompanyInvoice:false,
+        ReportFilters:false,
+      }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+  openProductsExtract(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:true,
+      openUsersmenu:false,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:true,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+
   openUsers(){
     if(this.openUsersmenu){
       this.openUsersmenu = !this.openUsersmenu
     }else{
       this.openUsersmenu = true
     }
+  }
+  openUsersCreate(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:false,
+      openUsersmenu:true,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:true,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+  openUsersUpdate(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:false,
+      openUsersmenu:true,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:true,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+  openUsersExtract(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:false,
+      openUsersmenu:true,
+      openReportsmenu:false,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:true,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
   }
   openReports(){
     if(this.openReportsmenu){
@@ -191,4 +527,67 @@ export class HolderComponent {
       this.openReportsmenu = true
     }
   }
+  openReportsGenarateInvoice(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:false,
+      openUsersmenu:false,
+      openReportsmenu:true,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:true,
+      GenerateCompanyInvoice:false,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+  openReportsGenerateCompanyInvoice(){
+    let menuobj = {
+      openTasksmenu:false,
+      openOrdersmenu:false,
+      openProductsmenu:false,
+      openUsersmenu:false,
+      openReportsmenu:true,
+      selectMYTask:false,
+      selectCreateTasks:false,
+      PendingOrders:false,
+      NewOrder:false,
+      OrdersExtract:false,
+      AddProduct:false,
+      EditProduct:false,
+      ProductsExtract:false,
+      UserCreate:false,
+      UserUpdate:false,
+      UsersExtract:false,
+      GenerateInvoice:false,
+      GenerateCompanyInvoice:true,
+      ReportFilters:false,
+    }
+    sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
+    this.activemenuobj = menuobj
+    this.spinner.show()
+    setTimeout(() => {
+      this.resetmenu()
+      this.spinner.hide()
+    }, 1000);
+
+  }
+
 }

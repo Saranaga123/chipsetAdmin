@@ -36,7 +36,6 @@ import { GenerateCompanyInvoiceComponent } from './pages/generate-company-invoic
 import { FiltersComponent } from './pages/filters/filters.component';
 import { CreateTaskComponent } from './pages/create-task/create-task.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

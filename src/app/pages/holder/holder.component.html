@@ -1,6 +1,6 @@
 <app-header style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 5vh;float: left;width: 100%;"></app-header>
 <div style="height:3vh;float: left; width: 100%;background-color: rgb(134, 134, 134);padding-left: 10%; color:white; font-weight: bold;">
-  : My Tasks/
+  : {{navLevel1}}/{{navLevel2}}/
 </div>
 <div style="height:90vh;float: left; width: 100%;background-color: rgb(194, 194, 194);">
   <div style="background-color:  rgb(134, 134, 134); float: left;width: 10%;height:90vh;padding-top: 10px;">
@@ -12,32 +12,45 @@
     </div>
     <div class="menuitem" (click)="openOrders()" ><span *ngIf="!openOrdersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openOrdersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Orders</div>
       <div [ngClass]="{'subwrapper1open': openOrdersmenu, 'subwrapper1': !openOrdersmenu}" >
-        <div class="submenuitem"  >Pending Orders</div>
-        <div class="submenuitem"  >New Order</div>
-        <div class="submenuitem"  >Orders Extract</div>
+        <div class="submenuitem" (click)="openPendingOrders()" [ngClass]="{'menuitemselected': PendingOrders}">Pending Orders</div>
+        <div class="submenuitem" (click)="openNewOrder()" [ngClass]="{'menuitemselected': NewOrder}">New Order</div>
+        <div class="submenuitem" (click)="openOrdersExtract()" [ngClass]="{'menuitemselected': OrdersExtract}">Orders Extract</div>
       </div>
     <div class="menuitem"  (click)="openProducts()" ><span *ngIf="!openProductsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openProductsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Products</div>
       <div [ngClass]="{'subwrapper2open': openProductsmenu, 'subwrapper2': !openProductsmenu}">
-        <div class="submenuitem"  >Add Product</div>
-        <div class="submenuitem"  >Edit Product</div>
-        <div class="submenuitem"  >Products Extract</div>
+        <div class="submenuitem" (click)="openAddProduct()" [ngClass]="{'menuitemselected': AddProduct}" >Add Product</div>
+        <div class="submenuitem" (click)="openEditProduct()" [ngClass]="{'menuitemselected': EditProduct}" >Edit Product</div>
+        <div class="submenuitem" (click)="openProductsExtract()" [ngClass]="{'menuitemselected': ProductsExtract}" >Products Extract</div>
       </div>
     <div class="menuitem"  (click)="openUsers()" ><span *ngIf="!openUsersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openUsersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Users</div>
       <div [ngClass]="{'subwrapper3open': openUsersmenu, 'subwrapper3': !openUsersmenu}">
-        <div class="submenuitem"  >User Create</div>
-        <div class="submenuitem"  >User Update/Delete</div>
-        <div class="submenuitem"  >Users Extract</div>
+        <div class="submenuitem" (click)="openUsersCreate()" [ngClass]="{'menuitemselected': UserCreate}">User Create</div>
+        <div class="submenuitem" (click)="openUsersUpdate()" [ngClass]=" {'menuitemselected':UserUpdate}">User Update/Delete</div>
+        <div class="submenuitem" (click)="openUsersExtract()" [ngClass]="{'menuitemselected': UsersExtract}">Users Extract</div>
       </div>
     <div class="menuitem"  (click)="openReports()" ><span *ngIf="!openReportsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openReportsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Reports</div>
       <div [ngClass]="{'subwrapper4open': openReportsmenu, 'subwrapper4': !openReportsmenu}">
-        <div class="submenuitem"  >Generate Invoice</div>
-        <div class="submenuitem"  >Generate Company Invoice</div>
-        <div class="submenuitem"  >Filters</div>
+        <div class="submenuitem" (click)="openReportsGenarateInvoice()" [ngClass]="{'menuitemselected':GenerateInvoice} ">Generate Invoice</div>
+        <div class="submenuitem" (click)="openReportsGenerateCompanyInvoice()" [ngClass]="{'menuitemselected':GenerateCompanyInvoice }">Generate Co.Invoice</div>
+
       </div>
   </div>
   <div style="background-color:  rgb(182, 182, 182); float: left;width: 90%;height:90vh;">
     <app-tasks-board *ngIf="selectMYTask"></app-tasks-board>
     <app-create-task *ngIf="selectCreateTasks"></app-create-task>
+    <app-pending-orders *ngIf="PendingOrders"></app-pending-orders>
+    <app-new-order *ngIf="NewOrder"></app-new-order>
+    <app-orders-extract *ngIf="OrdersExtract"></app-orders-extract>
+    <app-add-product  *ngIf="AddProduct"></app-add-product>
+    <app-edit-product *ngIf="EditProduct"></app-edit-product>
+    <app-product-extract *ngIf="ProductsExtract"></app-product-extract>
+    <app-users-create *ngIf=" UserCreate"></app-users-create>
+    <app-users-update *ngIf=" UserUpdate"></app-users-update>
+    <app-users-extract *ngIf=" UsersExtract"></app-users-extract>
+    <app-generate-invoice *ngIf="GenerateInvoice" ></app-generate-invoice>
+    <app-generate-company-invoice *ngIf="GenerateCompanyInvoice"></app-generate-company-invoice>
+
   </div>
 </div>
 <app-footer style="filter: drop-shadow(0 0 1rem rgb(90, 90, 90)); height: 2vh;float: left;width: 100%;"></app-footer>
+<app-spinner></app-spinner>

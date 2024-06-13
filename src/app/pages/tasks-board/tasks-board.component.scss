@@ -26,3 +26,11 @@ button:hover{
 th{
   padding: 5px;
 }
+.recordhover{
+  border: 1px solid gray;background-color: rgb(255, 255, 255);
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.recordhover:hover{
+  background-color: rgb(219, 219, 219);
+}
