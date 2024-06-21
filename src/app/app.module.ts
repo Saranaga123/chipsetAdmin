@@ -35,6 +35,9 @@ import { GenerateInvoiceComponent } from './pages/generate-invoice/generate-invo
 import { GenerateCompanyInvoiceComponent } from './pages/generate-company-invoice/generate-company-invoice.component';
 import { FiltersComponent } from './pages/filters/filters.component';
 import { CreateTaskComponent } from './pages/create-task/create-task.component';
+import { VieworderComponent } from './pages/popup/vieworder/vieworder.component';
+import { EditorderComponent } from './pages/popup/editorder/editorder.component';
+import { DeleteorderComponent } from './pages/popup/deleteorder/deleteorder.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { CreateTaskComponent } from './pages/create-task/create-task.component';
     GenerateInvoiceComponent,
     GenerateCompanyInvoiceComponent,
     FiltersComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    VieworderComponent,
+    EditorderComponent,
+    DeleteorderComponent
   ],
   imports: [
     BrowserModule,

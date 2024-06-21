@@ -1,0 +1,98 @@
+<div >
+  <p style="font-size: 40px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">SYS. ID* : {{data.id}}</p>
+  <p style="font-size: 25px;float: left;width: 100%;padding-left:10px;padding-top:5px ;font-weight: bolder;color: rgb(14, 58, 124);">${{data.billingAmount| number:'1.2-2'}}</p>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Order ID</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.id}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Customer</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; " [(ngModel)]="name">
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Unit Price</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; " [(ngModel)]="unitprice" (change)="calculatePrice(unitprice,units)" >
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Units</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; " [(ngModel)]="units"(change)="calculatePrice(unitprice,units)">
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Discount %</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; " [(ngModel)]="discountp" (change)="adddiscount(discountp)" >
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Billing Amount $</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; " disabled [(ngModel)]="billingAmount">
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Mobile</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; "   [(ngModel)]="mobile">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Email</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; "   [(ngModel)]="email">
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Date</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.date}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Address</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">
+        <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; "   [(ngModel)]="add1">,
+        <br><input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; "   [(ngModel)]="add2">,
+        <br><input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; "   [(ngModel)]="add3"></p>
+    </div>
+    <div style="width:100%;float: left;margin-bottom: 20px;" >
+      <div style="width:100%;text-align: center;float: left;">
+      </div>
+
+      <div style="width:20%;float: left;height:5px">
+      </div>
+      <div style="width:30%;float: left; height: 1px;">
+
+      </div>
+      <div style="width:30%;float: left; ">
+        <button style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%; "  >Update</button>
+      </div>
+    </div>
+  </div>
+
+  <app-spinner></app-spinner>

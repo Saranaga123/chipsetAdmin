@@ -23,7 +23,20 @@ export class TasksBoardComponent {
   }
 
   ngOnInit(): void {
-
+    this.getUserData()
+  }
+  getUserData(){
+    const userdata = sessionStorage.getItem("userdata")
+    if(userdata){
+      let dataObj = JSON.parse(userdata)
+      this.UserName = dataObj.name
+    }else{
+      this.logout()
+    }
+  }
+  logout(){
+    sessionStorage.removeItem("userdata");
+    this.router.navigate(['/login']);
   }
   openOrders(){
     if(this.openOrdersmenu){

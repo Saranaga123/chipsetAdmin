@@ -1,0 +1,80 @@
+<div  >
+  <p style="font-size: 40px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;"><span style="color: rgb(107, 1, 1);">DELETE ORDER</span> : {{data.id}}</p>
+  <p style="font-size: 25px;float: left;width: 100%;padding-left:10px;padding-top:5px ;font-weight: bolder;color: rgb(14, 58, 124);">${{data.billingAmount| number:'1.2-2'}}</p>
+  <div style="width:100%;float: left;"  >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Order ID</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.id}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Customer</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.name}}</p>
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Unit Price</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.unitprice}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Units</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.units}}</p>
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Billing Amount</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.billingAmount| number:'1.2-2'}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Mobile</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.mobile}}</p>
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Email</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.email}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Date</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.date}}</p>
+    </div>
+  </div>
+  <div style="width:100%;float: left;" >
+    <div style="width:100%;text-align: center;float: left;">
+    </div>
+
+    <div style="width:20%;float: left;height:5px">
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Address</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.name}},<br>{{data.add1}},<br>{{data.add2}},<br>{{data.add3}}</p>
+    </div>
+    <div style="width:30%;float: left; ">
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Type delete and click on confirm</p>
+      <input style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; " [(ngModel)]="confirmation">
+      <button style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%; " (click)="delete()">Confirm</button>
+    </div>
+  </div>
+  <app-spinner></app-spinner>

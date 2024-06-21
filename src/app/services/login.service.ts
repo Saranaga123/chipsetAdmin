@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { IuserLogin, userLogin } from './shared/models/userLogin';
 import { IOrderUpload, Order } from './shared/models/order';
 import { Product } from './shared/models/product'
-import { ORDER_UPLOAD_URL,GET_PROD_REQ,GET_PROD_LIST, LOGIN, ORDER_UPDATE_URL, GET_ORDERS, USER_CREATE } from './shared/constants/urls';
+import { ORDER_UPLOAD_URL,GET_PROD_REQ,GET_PROD_LIST, LOGIN, ORDER_UPDATE_URL, GET_ORDERS, USER_CREATE, GET_ALL_ORDERS, ORDER_DELETE_URL } from './shared/constants/urls';
 import { IUserCreate, User } from './shared/models/user';
 
 @Injectable({
@@ -39,21 +39,32 @@ export class LoginService {
   createuser(userdata:IUserCreate):Observable<User>{
     return this.http.post<User>(USER_CREATE,userdata);
   }
+  getAllOrders():Observable<Product[]>{
+    console.log(">>>>>>>>>>>>>1",GET_ALL_ORDERS)
+    return this.http.get<Product[]>(GET_ALL_ORDERS)
+  }
 
-  getorders(id:any):Observable<Product[]>{
+  getorders(id:any):Observable<Order[]>{
     const checkparam = id;
     console.log(">>>>>>>>>>>>>1",GET_ORDERS+checkparam)
-    return this.http.get<Product[]>(GET_ORDERS+checkparam)
+    return this.http.get<Order[]>(GET_ORDERS+checkparam)
   }
 
   login(orderDetails:IuserLogin):Observable<User>{
     return this.http.post<User>(LOGIN,orderDetails);
   }
-  updateOrder(id: any, orderDetails: IOrderUpload): Observable<Product[]> {
+  updateOrder(id: any, orderDetails: IOrderUpload): Observable<Order[]> {
     const checkparam = id;
     console.log(">>>>>>>>>>>>>1", ORDER_UPDATE_URL + checkparam, orderDetails);
 
     // Use HTTP PUT and send orderDetails in the request body
-    return this.http.post<Product[]>(ORDER_UPDATE_URL + checkparam, orderDetails);
+    return this.http.post<Order[]>(ORDER_UPDATE_URL + checkparam, orderDetails);
+  }
+  deleteOrder(id: any): Observable<{ status: string }> {
+    const deleteUrl = `${ORDER_DELETE_URL}${id}`;
+    console.log("Deleting order with URL:", deleteUrl);
+
+    // Use HTTP DELETE method to delete the order
+    return this.http.delete<{ status: string }>(deleteUrl);
   }
 }

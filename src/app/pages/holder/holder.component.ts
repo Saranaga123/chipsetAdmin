@@ -40,54 +40,64 @@ export class HolderComponent {
     // this.spinner.show()
   }
   ngOnInit(): void {
-    this.activemenuobj = sessionStorage.getItem("menuobj")
-    if (this.activemenuobj){
-      this.activemenuobj = JSON.parse(this.activemenuobj)
-      this.openTasksmenu= this.activemenuobj.openTasksmenu
-      this.openOrdersmenu= this.activemenuobj.openOrdersmenu
-      this.openProductsmenu= this.activemenuobj.openProductsmenu
-      this.openUsersmenu= this.activemenuobj.openUsersmenu
-      this.openReportsmenu= this.activemenuobj.openReportsmenu
-      this.selectMYTask= this.activemenuobj.selectMYTask
-      this.selectCreateTasks= this.activemenuobj.selectCreateTasks
-      this.PendingOrders= this.activemenuobj.PendingOrders
-      this.NewOrder= this.activemenuobj.NewOrder
-      this.OrdersExtract= this.activemenuobj.OrdersExtract
-      this.AddProduct= this.activemenuobj.AddProduct
-      this.EditProduct= this.activemenuobj.EditProduct
-      this.ProductsExtract= this.activemenuobj.ProductsExtract
-      this.UserCreate= this.activemenuobj.UserCreate
-      this.UserUpdate= this.activemenuobj.UserUpdate
-      this.UsersExtract= this.activemenuobj.UsersExtract
-      this.GenerateInvoice= this.activemenuobj.GenerateInvoice
-      this.GenerateCompanyInvoice= this.activemenuobj.GenerateCompanyInvoice
-    }else{
-      this.activemenuobj = {
-        openTasksmenu:true,
-        openOrdersmenu:false,
-        openProductsmenu:false,
-        openUsersmenu:false,
-        openReportsmenu:false,
-        selectMYTask:true,
-        CreateTasks:false,
-        PendingOrders:false,
-        NewOrder:false,
-        OrdersExtract:false,
-        AddProduct:false,
-        EditProduct:false,
-        ProductsExtract:false,
-        UserCreate:false,
-        UserUpdate:false,
-        UsersExtract:false,
-        GenerateInvoice:false,
-        GenerateCompanyInvoice:false,
-        ReportFilters:false,
-      }
-      this.openTasksmenu=true
-      this.selectMYTask=true
+    let userdata = sessionStorage.getItem("userdata")
+    if(userdata){
+      this.activemenuobj = sessionStorage.getItem("menuobj")
+      if (this.activemenuobj){
+        this.activemenuobj = JSON.parse(this.activemenuobj)
+        this.openTasksmenu= this.activemenuobj.openTasksmenu
+        this.openOrdersmenu= this.activemenuobj.openOrdersmenu
+        this.openProductsmenu= this.activemenuobj.openProductsmenu
+        this.openUsersmenu= this.activemenuobj.openUsersmenu
+        this.openReportsmenu= this.activemenuobj.openReportsmenu
+        this.selectMYTask= this.activemenuobj.selectMYTask
+        this.selectCreateTasks= this.activemenuobj.selectCreateTasks
+        this.PendingOrders= this.activemenuobj.PendingOrders
+        this.NewOrder= this.activemenuobj.NewOrder
+        this.OrdersExtract= this.activemenuobj.OrdersExtract
+        this.AddProduct= this.activemenuobj.AddProduct
+        this.EditProduct= this.activemenuobj.EditProduct
+        this.ProductsExtract= this.activemenuobj.ProductsExtract
+        this.UserCreate= this.activemenuobj.UserCreate
+        this.UserUpdate= this.activemenuobj.UserUpdate
+        this.UsersExtract= this.activemenuobj.UsersExtract
+        this.GenerateInvoice= this.activemenuobj.GenerateInvoice
+        this.GenerateCompanyInvoice= this.activemenuobj.GenerateCompanyInvoice
+      }else{
+        this.activemenuobj = {
+          openTasksmenu:true,
+          openOrdersmenu:false,
+          openProductsmenu:false,
+          openUsersmenu:false,
+          openReportsmenu:false,
+          selectMYTask:true,
+          CreateTasks:false,
+          PendingOrders:false,
+          NewOrder:false,
+          OrdersExtract:false,
+          AddProduct:false,
+          EditProduct:false,
+          ProductsExtract:false,
+          UserCreate:false,
+          UserUpdate:false,
+          UsersExtract:false,
+          GenerateInvoice:false,
+          GenerateCompanyInvoice:false,
+          ReportFilters:false,
+        }
+        this.openTasksmenu=true
+        this.selectMYTask=true
 
+      }
+      this.setNav()
+    }else{
+      this.logout()
     }
-    this.setNav()
+
+  }
+  logout(){
+    sessionStorage.removeItem("userdata");
+    this.router.navigate(['/login']);
   }
   resetmenu(){
     this.openTasksmenu= this.activemenuobj.openTasksmenu

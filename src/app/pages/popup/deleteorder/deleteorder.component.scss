@@ -1,0 +1,37 @@
+.Orbit{
+  width: 100%;
+  height: 90vh;
+  overflow-y: auto;
+  padding: 20px 20px 20px 20px;
+}
+button{
+  border-radius: 10px;
+  padding: 4px 10px 4px 10px ;
+  font-weight: bold;
+  background-color:rgb(61, 5, 5) ;
+  color: white;
+  width: 30%;
+  margin-left: 35%;
+  text-align: center;
+}
+button:hover{
+    border-radius: 10px;
+    padding: 4px 10px 4px 10px ;
+    font-weight: bold;
+    background-color:rgb(85, 6, 6) ;
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+    filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
+}
+th{
+  padding: 5px;
+}
+.recordhover{
+  border: 1px solid gray;background-color: rgb(255, 255, 255);
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.recordhover:hover{
+  background-color: rgb(219, 219, 219);
+}
