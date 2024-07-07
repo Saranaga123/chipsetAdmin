@@ -34,3 +34,12 @@ th{
 .recordhover:hover{
   background-color: rgb(219, 219, 219);
 }
+@page {
+  margin: 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

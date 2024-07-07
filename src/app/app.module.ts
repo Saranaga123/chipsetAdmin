@@ -38,6 +38,9 @@ import { CreateTaskComponent } from './pages/create-task/create-task.component';
 import { VieworderComponent } from './pages/popup/vieworder/vieworder.component';
 import { EditorderComponent } from './pages/popup/editorder/editorder.component';
 import { DeleteorderComponent } from './pages/popup/deleteorder/deleteorder.component';
+import { ViewProductComponent } from './pages/popup/view-product/view-product.component';
+import { DeleteProductComponent } from './pages/popup/delete-product/delete-product.component';
+import { EditProductPopComponent } from './pages/popup/edit-product-pop/edit-product-pop.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { DeleteorderComponent } from './pages/popup/deleteorder/deleteorder.comp
     CreateTaskComponent,
     VieworderComponent,
     EditorderComponent,
-    DeleteorderComponent
+    DeleteorderComponent,
+    ViewProductComponent,
+    DeleteProductComponent,
+    EditProductPopComponent
   ],
   imports: [
     BrowserModule,

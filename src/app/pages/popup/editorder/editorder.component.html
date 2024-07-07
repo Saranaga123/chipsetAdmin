@@ -72,6 +72,13 @@
     <div style="width:30%;float: left; ">
       <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Date</p>
       <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:0px ; ">{{data.date}}</p>
+      <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Status</p>
+      <select style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:2px ; margin-top: 5px; "  [(ngModel)]="status">
+        <option value="inprogress">In Progress</option>
+        <option value="processing">Processing</option>
+        <option value="packing">Packing</option>
+        <option value="shipped">Shipped</option>
+      </select>
     </div>
     <div style="width:30%;float: left; ">
       <p style="font-size: 20px;float: left;width: 100%;padding-left:10px;padding-top:30px ;font-weight: bolder;">Address</p>
@@ -90,7 +97,7 @@
 
       </div>
       <div style="width:30%;float: left; ">
-        <button style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%; "  >Update</button>
+        <button style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%; " (click)="updateOrder(data.id)" >Update</button>
       </div>
     </div>
   </div>

@@ -119,14 +119,14 @@ export class PendingOrdersComponent {
   }
 
   filterOrders(): void {
-    this.filteredOrders = this.orders.filter((order: any) => order.status === 'inprogress');
+    this.filteredOrders = this.orders.filter((order: any) => order.status != 'shipped');
     console.log(this.filteredOrders);
   }
 
   filterOrdersByCriteria(orderId: string, name: string, email: string): void {
     this.filteredOrders = this.orders.filter((order: any) => {
       return (
-        order.status === 'inprogress' &&
+        order.status !=  'shipped' &&
         (!orderId || order.id.includes(orderId)) &&
         (!name || order.name.includes(name)) &&
         (!email || order.email.includes(email))
@@ -140,7 +140,7 @@ export class PendingOrdersComponent {
     this.cusName = ""
     this.filteredOrders = this.filteredOrders.filter((order: any) => {
       return (
-        order.status === 'inprogress' &&
+        order.status != 'shipped' &&
         (!this.orderId || order.id.includes(this.orderId)) &&
         (!this.cusName || order.name.includes(this.cusName)) &&
         (!this.cusEmail || order.email.includes(this.cusEmail))
@@ -156,6 +156,15 @@ export class PendingOrdersComponent {
       modalRef.result.then(
         (result) => {
           console.log('Modal closed with result:', result);
+          if(result=="confirm"){
+            this.filteredOrders = ""
+            this.orders=""
+            setTimeout(() => {
+              this.getOrdersAfterDelete()
+            }, 100);
+
+
+          }
         },
         (reason) => {
           console.log('Modal dismissed with reason:', reason);

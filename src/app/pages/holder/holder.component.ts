@@ -360,11 +360,11 @@ export class HolderComponent {
     }
     sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
     this.activemenuobj = menuobj
-    this.spinner.show()
+    // this.spinner.show()
     setTimeout(() => {
       this.resetmenu()
-      this.spinner.hide()
-    }, 1000);
+      // this.spinner.hide()
+    }, 100);
 
   }
   openEditProduct(){
@@ -391,11 +391,11 @@ export class HolderComponent {
       }
     sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
     this.activemenuobj = menuobj
-    this.spinner.show()
+    // this.spinner.show()
     setTimeout(() => {
       this.resetmenu()
-      this.spinner.hide()
-    }, 1000);
+      // this.spinner.hide()
+    }, 100);
 
   }
   openProductsExtract(){
@@ -422,11 +422,11 @@ export class HolderComponent {
     }
     sessionStorage.setItem("menuobj",JSON.stringify(menuobj))
     this.activemenuobj = menuobj
-    this.spinner.show()
+    // this.spinner.show()
     setTimeout(() => {
       this.resetmenu()
-      this.spinner.hide()
-    }, 1000);
+      // this.spinner.hide()
+    }, 100);
 
   }
 

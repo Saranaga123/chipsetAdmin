@@ -60,6 +60,7 @@ export class LoginService {
     // Use HTTP PUT and send orderDetails in the request body
     return this.http.post<Order[]>(ORDER_UPDATE_URL + checkparam, orderDetails);
   }
+
   deleteOrder(id: any): Observable<{ status: string }> {
     const deleteUrl = `${ORDER_DELETE_URL}${id}`;
     console.log("Deleting order with URL:", deleteUrl);
