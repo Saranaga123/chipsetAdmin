@@ -106,7 +106,7 @@ export class EditProductComponent {
               status:element.status,
               category:element.category,
               price:element.price,
-              image:this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,'+element.image)
+              image:this._sanitizer.bypassSecurityTrustResourceUrl( element.image)
 
             }
             this.prod.push(prodObj)
@@ -124,26 +124,44 @@ export class EditProductComponent {
       this.loginservice.getprodList().subscribe(observer);
 
   }
-  getOrdersAfterDelete(): void {
-    this.spinner.show();
-    const observer = {
-      next: (data: any) => {
-        this.spinner.hide();
-        this.products = data;
-        console.log(data);
-        setTimeout(() => {
-          this.filterOrdersByCriteria(this.orderId,this.cusName,this.cusEmail)
-        }, 500);
+  getProdsAfterDelete(): void {
+    let userlogs = sessionStorage.getItem("userdata")
+
+      // sessionStorage.clear()
+      this.prod=[]
+      const observer = {
+        next: (data: any) => {
 
 
-      },
-      error: (error: any) => {
-        this.spinner.hide();
-        console.error('Error retrieving transaction:', error);
-      },
-    };
-    console.log(this.products.length);
-    this.loginservice.getAllOrders().subscribe(observer);
+          for(const element of data){
+
+            const prodObj={
+              id:element.id,
+              name:element.name,
+              userid:element.userid,
+              buyerid:element.buyerid,
+              description:element.description,
+              available:element.available,
+              status:element.status,
+              category:element.category,
+              price:element.price,
+              image:this._sanitizer.bypassSecurityTrustResourceUrl( element.image)
+
+            }
+            this.prod.push(prodObj)
+
+            console.log("this.displaydata",this.prod)
+          }
+          sessionStorage.setItem("prod",JSON.stringify(this.prod))
+          this.spinner.hide()
+        },
+        error: (error: any) => {
+          console.error('Error retrieving transaction:', error);
+        },
+      };
+
+      this.loginservice.getprodList().subscribe(observer);
+
   }
 
   filterProducts(): void {
@@ -188,7 +206,7 @@ export class EditProductComponent {
             this.filteredOrders = ""
             this.products=""
             setTimeout(() => {
-              this.getOrdersAfterDelete()
+              this.getProdList()
             }, 100);
 
 
@@ -226,8 +244,8 @@ export class EditProductComponent {
             this.filteredOrders = ""
             this.products=""
             setTimeout(() => {
-              this.getOrdersAfterDelete()
-              this.spinner.hide();
+              this.spinner.show()
+              this.getProdsAfterDelete()
             }, 100);
 
 

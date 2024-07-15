@@ -5,11 +5,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-edit-product-pop',
-  templateUrl: './edit-product-pop.component.html',
-  styleUrls: ['./edit-product-pop.component.scss']
+  selector: 'app-add-product-pop',
+  templateUrl: './add-product-pop.component.html',
+  styleUrls: ['./add-product-pop.component.scss']
 })
-export class EditProductPopComponent {
+export class AddProductPopComponent {
   model: string="";
   Description: string="";
   Processor: string=""

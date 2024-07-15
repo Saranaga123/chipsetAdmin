@@ -8,6 +8,7 @@ import { DeleteorderComponent } from '../popup/deleteorder/deleteorder.component
 import { EditorderComponent } from '../popup/editorder/editorder.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ViewProductComponent } from '../popup/view-product/view-product.component';
+import { AddProductPopComponent } from '../popup/add-product-pop/add-product-pop.component';
 
 @Component({
   selector: 'app-add-product',
@@ -104,7 +105,7 @@ export class AddProductComponent {
               status:element.status,
               category:element.category,
               price:element.price,
-              image:this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,'+element.image)
+              image:this._sanitizer.bypassSecurityTrustResourceUrl( element.image)
 
             }
             this.prod.push(prodObj)
@@ -174,11 +175,11 @@ export class AddProductComponent {
     });
     console.log(this.filteredOrders);
   }
-  editOrder(model:any){
-    const modalRef = this.modalService.open(EditorderComponent, {
+  addProduct( ){
+    const modalRef = this.modalService.open(AddProductPopComponent, {
       size: 'xl',
     });
-    modalRef.componentInstance.data = model;
+
       modalRef.result.then(
         (result) => {
           console.log('Modal closed with result:', result);
@@ -188,8 +189,6 @@ export class AddProductComponent {
             setTimeout(() => {
               this.getOrdersAfterDelete()
             }, 100);
-
-
           }
         },
         (reason) => {

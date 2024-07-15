@@ -50,10 +50,10 @@ export class DeleteorderComponent {
     this.spinner.show();
     this.landingservice.deleteOrder(this.data.id).subscribe(
       (response) => {
-        // this.spinner.hide();
+        this.spinner.hide();
       },
       (error) => {
-        // this.spinner.hide();
+        this.spinner.hide();
 
       }
     );

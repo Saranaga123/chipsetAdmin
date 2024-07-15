@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IuserLogin, userLogin } from './shared/models/userLogin';
 import { IOrderUpload, Order } from './shared/models/order';
-import { Product } from './shared/models/product'
-import { ORDER_UPLOAD_URL,GET_PROD_REQ,GET_PROD_LIST, LOGIN, ORDER_UPDATE_URL, GET_ORDERS, USER_CREATE, GET_ALL_ORDERS, ORDER_DELETE_URL } from './shared/constants/urls';
+import { IProductUpload, Product } from './shared/models/product'
+import { ORDER_UPLOAD_URL,GET_PROD_REQ,GET_PROD_LIST, LOGIN, ORDER_UPDATE_URL, GET_ORDERS, USER_CREATE, GET_ALL_ORDERS, ORDER_DELETE_URL, PRODUCT_CREATE_URL, PRODUCT_CREATE_URL2, PRODUCT_DELETE_URL } from './shared/constants/urls';
 import { IUserCreate, User } from './shared/models/user';
+import { IProductspecUpload, ProductSpec } from './shared/models/productspec';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,12 @@ export class LoginService {
     console.log(">>>>>>>>>>>>>1",GET_PROD_REQ+checkparam)
     return this.http.get<Product[]>(GET_PROD_REQ+checkparam)
   }
-
+  createprod(prodDetails:IProductUpload):Observable<Product>{
+    return this.http.post<Product>(PRODUCT_CREATE_URL,prodDetails);
+  }
+  createprodspec(prodDetails:IProductspecUpload):Observable<ProductSpec>{
+    return this.http.post<ProductSpec>(PRODUCT_CREATE_URL2,prodDetails);
+  }
   createorder(orderDetails:IOrderUpload):Observable<Order>{
     return this.http.post<Order>(ORDER_UPLOAD_URL,orderDetails);
   }
@@ -67,5 +73,12 @@ export class LoginService {
 
     // Use HTTP DELETE method to delete the order
     return this.http.delete<{ status: string }>(deleteUrl);
+  }
+  deleteProd(id: any): Observable<{ status: string }> {
+    const deleteUrl = `${PRODUCT_DELETE_URL}${id}`;
+    console.log("Deleting Product with URL:", deleteUrl);
+
+    // Use HTTP DELETE method to delete the order
+    return this.http.get<{ status: string }>(deleteUrl);
   }
 }
