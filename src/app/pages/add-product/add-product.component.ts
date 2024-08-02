@@ -110,8 +110,11 @@ export class AddProductComponent {
             }
             this.prod.push(prodObj)
 
+
+
             console.log("this.displaydata",this.prod)
           }
+          this.products = this.prod
           sessionStorage.setItem("prod",JSON.stringify(this.prod))
           this.spinner.hide()
         },
@@ -131,7 +134,7 @@ export class AddProductComponent {
         this.products = data;
         console.log(data);
         setTimeout(() => {
-          this.filterOrdersByCriteria(this.orderId,this.cusName,this.cusEmail)
+          this.filterOrdersByCriteria(this.orderId)
         }, 500);
 
 
@@ -150,29 +153,17 @@ export class AddProductComponent {
     console.log(this.filteredOrders);
   }
 
-  filterOrdersByCriteria(orderId: string, name: string, email: string): void {
-    this.filteredOrders = this.products.filter((product: any) => {
+  filterOrdersByCriteria(orderId: string): void {
+    this.products = this.prod.filter((order: any) => {
       return (
-        product.status !=  'shipped' &&
-        (!orderId || product.id.includes(orderId)) &&
-        (!name || product.name.includes(name)) &&
-        (!email || product.email.includes(email))
+        (!orderId || order.name.includes(orderId))
       );
     });
     console.log(this.filteredOrders);
   }
   clearFilters(){
     this.orderId = ""
-    this.cusEmail=""
-    this.cusName = ""
-    this.filteredOrders = this.filteredOrders.filter((product: any) => {
-      return (
-        product.status != 'shipped' &&
-        (!this.orderId || product.id.includes(this.orderId)) &&
-        (!this.cusName || product.name.includes(this.cusName)) &&
-        (!this.cusEmail || product.email.includes(this.cusEmail))
-      );
-    });
+    this.products = this.prod
     console.log(this.filteredOrders);
   }
   addProduct( ){
@@ -187,7 +178,9 @@ export class AddProductComponent {
             this.filteredOrders = ""
             this.products=""
             setTimeout(() => {
-              this.getOrdersAfterDelete()
+              this.prod=[]
+              this.getProdList()
+
             }, 100);
           }
         },

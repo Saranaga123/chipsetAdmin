@@ -14,7 +14,7 @@
 
 
         <div style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%;text-align: right;"  >
-          <button (click)="filterOrdersByCriteria(orderId,cusName,cusEmail)" >Filter</button>
+          <button (click)="filterOrdersByCriteria(orderId)" >Filter</button>
         </div>
         <div style="width: 80%; float: left; margin-top: 10px;margin-left: 10%;margin-right: 10%;text-align: right;"  >
           <button (click)="clearFilters()" >Clear Filters</button>
@@ -49,7 +49,7 @@
           <div style="width: 100%;  overflow-y: auto; max-height: 50vh;" >
             <table style="width: 100%;"  >
 
-              <tr   class="recordhover"  *ngFor="let order of prod">
+              <tr   class="recordhover"  *ngFor="let order of products">
                 <td style="padding-left: 10px;width: 15%;padding-top: 5px;padding-bottom: 5px;">{{order.id}}</td>
                 <td style="width: 15%;">{{order.name}}</td>
                 <td style="width: 18%;"><img [src]="order.image" alt="baseimage"   height="50px"  ></td>

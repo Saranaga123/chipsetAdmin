@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -43,7 +44,8 @@ export class AddProductPopComponent {
     private landingservice : LoginService,
     private spinner: NgxSpinnerService,
     private _sanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public activeModal: NgbActiveModal
   ) {
   }
   imageUrl: string | ArrayBuffer | null = null;
@@ -183,6 +185,7 @@ export class AddProductPopComponent {
   }
   upload(){
     console.log("uploading",this.globalOBJ)
+    this.spinner.show()
     this.service1()
   }
   service1() {
@@ -192,7 +195,7 @@ export class AddProductPopComponent {
       name: this.globalOBJ.model,
       userid: "1",
       buyerid: "1",
-      price: this.globalOBJ.Price,
+      price: "$ "+this.globalOBJ.Price,
       description: this.globalOBJ.Description,
       available: "10",
       category: "test",
@@ -215,7 +218,7 @@ export class AddProductPopComponent {
     let obj = {
       id:"",
       name: this.globalOBJ.model,
-      price: this.globalOBJ.Price,
+      price: "$ "+this.globalOBJ.Price,
       Processor:this.globalOBJ.Processor,
       OperatingSystem :this.globalOBJ.ope,
       GraphicsCard:this.globalOBJ.Graphics,
@@ -242,6 +245,7 @@ export class AddProductPopComponent {
     this.landingservice.createprodspec(obj).subscribe(
       response => {
         console.log(response);
+        this.activeModal.close('confirm');
       },
       error => {
         console.error('Error creating product:', error);

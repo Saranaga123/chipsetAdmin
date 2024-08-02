@@ -10,10 +10,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./edit-product-pop.component.scss']
 })
 export class EditProductPopComponent {
+  @Input() data: any;
   model: string="";
   Description: string="";
   Processor: string=""
-  Price: number=0;
+  Price: string="";
   Icon: string="";
   ope: string="";
   Graphics: string="";
@@ -37,6 +38,7 @@ export class EditProductPopComponent {
   globalOBJ:any;
   audio:string=""
   specs:any={};
+  data2:any={};
   constructor(
     private titleService: Title,
     private router: Router,
@@ -58,7 +60,7 @@ export class EditProductPopComponent {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.imageUrl = reader.result;
+        this.specs.image = reader.result;
       };
 
       reader.readAsDataURL(file);
@@ -71,7 +73,7 @@ export class EditProductPopComponent {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.imageUrl2 = reader.result;
+        this.specs.image = reader.result;
       };
 
       reader.readAsDataURL(file);
@@ -84,7 +86,7 @@ export class EditProductPopComponent {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.imageUrl3 = reader.result;
+        this.specs.image2 = reader.result;
       };
 
       reader.readAsDataURL(file);
@@ -97,42 +99,111 @@ export class EditProductPopComponent {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.imageUrl4 = reader.result;
+        this.specs.image3 = reader.result;
       };
 
       reader.readAsDataURL(file);
     }
   }
   ngOnInit(): void {
-
-
+    this.getProd(this.data.name)
 
   }
-  getProd(model:any){
-    this.spinner.show()
+  imageuploadedtest(){
+
+    setTimeout(() => {
+      console.log("image:",this.imageUrl )
+    }, 100);
+  }
+  getProd(model: any) {
+    this.spinner.show();
     const observer = {
       next: (data: any) => {
-        this.specs=data[0]
-        this.specs.image=this._sanitizer.bypassSecurityTrustResourceUrl( this.specs.image)
-        this.specs.image2=this._sanitizer.bypassSecurityTrustResourceUrl( this.specs.image2)
-        this.specs.image3=this._sanitizer.bypassSecurityTrustResourceUrl( this.specs.image3)
-        this.specs.selectedImage="image"
-        console.log(this.specs)
-        this.spinner.hide()
+        this.specs = data[0];
+        this.specs.image = this._sanitizer.bypassSecurityTrustResourceUrl(this.specs.image);
+        this.specs.image2 = this._sanitizer.bypassSecurityTrustResourceUrl(this.specs.image2);
+        this.specs.image3 = this._sanitizer.bypassSecurityTrustResourceUrl(this.specs.image3);
+        this.specs.selectedImage = "image";
+        console.log(this.specs);
+        this.getProddata(model)
+
       },
       error: (error: any) => {
         console.error('Error retrieving transaction:', error);
+        this.spinner.hide();
       },
     };
 
     this.landingservice.getprod(model).subscribe(observer);
   }
+  getProddata(model: any) {
+    this.spinner.show();
+    const observer = {
+      next: (data: any) => {
+
+        console.log("Prod Data :",data);
+        this.data2 = data[0]
+
+        this.spinner.hide();
+        this.binddata();
+      },
+      error: (error: any) => {
+        console.error('Error retrieving transaction:', error);
+        this.spinner.hide();
+      },
+    };
+
+    this.landingservice.getProdData(model).subscribe(observer);
+  }
+
+  binddata() {
+    console.log("this.image", this.imageUrl);
+    this.model=this.specs.name ;
+    this.Description= this.data2.description ;
+    this.Processor=this.specs.Processor;
+    this.Price= this.data2.price;
+    this.ope=this.specs.OperatingSystem ;
+    this.Graphics=this.specs.GraphicsCard ;
+    this.Display=this.specs.Display ;
+    this.Memory=this.specs.Memory ;
+    this.Storage=this.specs.Storage ;
+    this.Case=this.specs.Case ;
+    this.Keyboard=this.specs.Keyboard ;
+    this.Camera=this.specs.Camera ;
+    this.Touchpad=this.specs.Touchpad ;
+    this.Weight=this.specs.Weight ;
+    this.Wireless=this.specs.Wireless ;
+    this.Battery=this.specs.PrimaryBattery ;
+    this.Power=this.specs.Power ;
+    this.blife=this.specs.BatteryLife ;
+    this.Regulatory=this.specs.Regulatory ;
+    this.audio=this.specs.AudioAndSpeakers;
+  }
+
   selectImage(image:string){
     this.specs.selectedImage=image
     console.log(this.specs)
   }
   submit(){
     this.submited=true
+    if(this.specs.image.changingThisBreaksApplicationSecurity){
+      this.imageUrl=this.specs.image.changingThisBreaksApplicationSecurity
+      this.imageUrl2=this.specs.image.changingThisBreaksApplicationSecurity
+    }else{
+      this.imageUrl=this.specs.image
+      this.imageUrl2=this.specs.image
+    }
+    if(this.specs.image2.changingThisBreaksApplicationSecurity){
+      this.imageUrl3=this.specs.image2.changingThisBreaksApplicationSecurity
+    }else{
+      this.imageUrl3=this.specs.image2
+    }
+    if(this.specs.image3.changingThisBreaksApplicationSecurity){
+      this.imageUrl4=this.specs.image3.changingThisBreaksApplicationSecurity
+    }else{
+      this.imageUrl4=this.specs.image3
+    }
+
     let obj = {
       model:this.model,
       Description:this.Description,
@@ -157,9 +228,10 @@ export class EditProductPopComponent {
       image: this.imageUrl,
       image1: this.imageUrl2,
       image2: this.imageUrl3,
-      image3: this.imageUrl4,
+      image3:this.imageUrl4,
       audio: this.audio
     }
+    console.log("obj",obj)
     this.validate(obj);
 
   }
@@ -185,6 +257,7 @@ export class EditProductPopComponent {
     console.log("uploading",this.globalOBJ)
     this.service1()
   }
+
   service1() {
     // Construct the product object
     let obj = {
@@ -199,9 +272,9 @@ export class EditProductPopComponent {
       status: "Active",
       image: this.globalOBJ.Icon,
     };
-
+    console.log("obj1",obj)
     // Call the service method to create the product
-    this.landingservice.createprod(obj).subscribe(
+    this.landingservice.createOrUpdateProduct(this.specs.name,obj).subscribe(
       response => {
         console.log(response);
         this.service2();
@@ -239,7 +312,7 @@ export class EditProductPopComponent {
 
     }
     console.log("obj2 = ",obj)
-    this.landingservice.createprodspec(obj).subscribe(
+    this.landingservice.createOrUpdateProductSpec(this.specs.name,obj).subscribe(
       response => {
         console.log(response);
       },

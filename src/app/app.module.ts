@@ -23,7 +23,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { TasksBoardComponent } from './pages/tasks-board/tasks-board.component';
 import { HolderComponent } from './pages/holder/holder.component';
 import { PendingOrdersComponent } from './pages/pending-orders/pending-orders.component';
-import { NewOrderComponent } from './pages/new-order/new-order.component';
 import { OrdersExtractComponent } from './pages/orders-extract/orders-extract.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
@@ -42,6 +41,11 @@ import { ViewProductComponent } from './pages/popup/view-product/view-product.co
 import { DeleteProductComponent } from './pages/popup/delete-product/delete-product.component';
 import { EditProductPopComponent } from './pages/popup/edit-product-pop/edit-product-pop.component';
 import { AddProductPopComponent } from './pages/popup/add-product-pop/add-product-pop.component';
+import { InProgressComponent } from './pages/in-progress/in-progress.component';
+import { CreateUserComponent } from './pages/popup/create-user/create-user.component';
+import { DeleteUserComponent } from './pages/popup/delete-user/delete-user.component';
+import { PasswordUpdateUserComponent } from './pages/popup/password-update-user/password-update-user.component';
+import { UpdateUserComponent } from './pages/popup/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,6 @@ import { AddProductPopComponent } from './pages/popup/add-product-pop/add-produc
     TasksBoardComponent,
     HolderComponent,
     PendingOrdersComponent,
-    NewOrderComponent,
     OrdersExtractComponent,
     AddProductComponent,
     EditProductComponent,
@@ -71,7 +74,12 @@ import { AddProductPopComponent } from './pages/popup/add-product-pop/add-produc
     ViewProductComponent,
     DeleteProductComponent,
     EditProductPopComponent,
-    AddProductPopComponent
+    AddProductPopComponent,
+    InProgressComponent,
+    CreateUserComponent,
+    DeleteUserComponent,
+    PasswordUpdateUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

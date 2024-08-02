@@ -23,6 +23,7 @@ export class OrdersExtractComponent {
   orderId = ""
   cusName = ""
   cusEmail = ""
+  date= new Date
   status = "all"
   filteredOrders:any={}
   constructor(

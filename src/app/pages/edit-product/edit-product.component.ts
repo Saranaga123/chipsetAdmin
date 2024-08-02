@@ -110,7 +110,7 @@ export class EditProductComponent {
 
             }
             this.prod.push(prodObj)
-
+            this.products = this.prod
             console.log("this.displaydata",this.prod)
           }
           sessionStorage.setItem("prod",JSON.stringify(this.prod))
@@ -149,7 +149,7 @@ export class EditProductComponent {
 
             }
             this.prod.push(prodObj)
-
+            this.products = this.prod
             console.log("this.displaydata",this.prod)
           }
           sessionStorage.setItem("prod",JSON.stringify(this.prod))
@@ -169,29 +169,17 @@ export class EditProductComponent {
     console.log(this.filteredOrders);
   }
 
-  filterOrdersByCriteria(orderId: string, name: string, email: string): void {
-    this.filteredOrders = this.products.filter((product: any) => {
+  filterOrdersByCriteria(orderId: string): void {
+    this.products = this.prod.filter((order: any) => {
       return (
-        product.status !=  'shipped' &&
-        (!orderId || product.id.includes(orderId)) &&
-        (!name || product.name.includes(name)) &&
-        (!email || product.email.includes(email))
+        (!orderId || order.name.includes(orderId))
       );
     });
     console.log(this.filteredOrders);
   }
   clearFilters(){
     this.orderId = ""
-    this.cusEmail=""
-    this.cusName = ""
-    this.filteredOrders = this.filteredOrders.filter((product: any) => {
-      return (
-        product.status != 'shipped' &&
-        (!this.orderId || product.id.includes(this.orderId)) &&
-        (!this.cusName || product.name.includes(this.cusName)) &&
-        (!this.cusEmail || product.email.includes(this.cusEmail))
-      );
-    });
+    this.products = this.prod
     console.log(this.filteredOrders);
   }
   editOrder(model:any){
@@ -244,7 +232,6 @@ export class EditProductComponent {
             this.filteredOrders = ""
             this.products=""
             setTimeout(() => {
-              this.spinner.show()
               this.getProdsAfterDelete()
             }, 100);
 

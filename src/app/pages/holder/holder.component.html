@@ -15,8 +15,7 @@
     </div>
     <div class="menuitem" (click)="openOrders()" ><span *ngIf="!openOrdersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openOrdersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Orders</div>
       <div [ngClass]="{'subwrapper1open': openOrdersmenu, 'subwrapper1': !openOrdersmenu}" >
-        <div class="submenuitem" (click)="openPendingOrders()" [ngClass]="{'menuitemselected': PendingOrders}">Pending Orders</div>
-        <div class="submenuitem" (click)="openNewOrder()" [ngClass]="{'menuitemselected': NewOrder}">New Order</div>
+        <div class="submenuitem" (click)="openPendingOrders()" [ngClass]="{'menuitemselected': PendingOrders}">Orders</div>
         <div class="submenuitem" (click)="openOrdersExtract()" [ngClass]="{'menuitemselected': OrdersExtract}">Orders Extract</div>
       </div>
     <div class="menuitem"  (click)="openProducts()" ><span *ngIf="!openProductsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openProductsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Products</div>
@@ -28,10 +27,10 @@
     <div class="menuitem"  (click)="openUsers()" ><span *ngIf="!openUsersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openUsersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Users</div>
       <div [ngClass]="{'subwrapper3open': openUsersmenu, 'subwrapper3': !openUsersmenu}">
         <div class="submenuitem" (click)="openUsersCreate()" [ngClass]="{'menuitemselected': UserCreate}">User Create</div>
-        <div class="submenuitem" (click)="openUsersUpdate()" [ngClass]=" {'menuitemselected':UserUpdate}">User Update/Delete</div>
+        <div class="submenuitem" (click)="openUsersUpdate()" [ngClass]=" {'menuitemselected':UserUpdate}">User Update</div>
         <div class="submenuitem" (click)="openUsersExtract()" [ngClass]="{'menuitemselected': UsersExtract}">Users Extract</div>
       </div>
-    <div class="menuitem"  (click)="openReports()" ><span *ngIf="!openReportsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openReportsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Reports</div>
+    <div class="menuitem"  (click)="openReports()" ><span *ngIf="!openReportsmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openReportsmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Documents</div>
       <div [ngClass]="{'subwrapper4open': openReportsmenu, 'subwrapper4': !openReportsmenu}">
         <div class="submenuitem" (click)="openReportsGenarateInvoice()" [ngClass]="{'menuitemselected':GenerateInvoice} ">Generate Invoice</div>
         <div class="submenuitem" (click)="openReportsGenerateCompanyInvoice()" [ngClass]="{'menuitemselected':GenerateCompanyInvoice }">Generate Co.Invoice</div>
@@ -42,7 +41,6 @@
     <app-tasks-board *ngIf="selectMYTask"></app-tasks-board>
     <app-create-task *ngIf="selectCreateTasks"></app-create-task>
     <app-pending-orders *ngIf="PendingOrders"></app-pending-orders>
-    <app-new-order *ngIf="NewOrder"></app-new-order>
     <app-orders-extract *ngIf="OrdersExtract"></app-orders-extract>
     <app-add-product  *ngIf="AddProduct"></app-add-product>
     <app-edit-product *ngIf="EditProduct"></app-edit-product>

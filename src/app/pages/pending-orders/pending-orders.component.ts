@@ -119,14 +119,13 @@ export class PendingOrdersComponent {
   }
 
   filterOrders(): void {
-    this.filteredOrders = this.orders.filter((order: any) => order.status != 'shipped');
+    this.filteredOrders = this.orders ;
     console.log(this.filteredOrders);
   }
 
   filterOrdersByCriteria(orderId: string, name: string, email: string): void {
     this.filteredOrders = this.orders.filter((order: any) => {
       return (
-        order.status !=  'shipped' &&
         (!orderId || order.id.includes(orderId)) &&
         (!name || order.name.includes(name)) &&
         (!email || order.email.includes(email))
@@ -138,9 +137,8 @@ export class PendingOrdersComponent {
     this.orderId = ""
     this.cusEmail=""
     this.cusName = ""
-    this.filteredOrders = this.filteredOrders.filter((order: any) => {
+    this.filteredOrders = this.orders.filter((order: any) => {
       return (
-        order.status != 'shipped' &&
         (!this.orderId || order.id.includes(this.orderId)) &&
         (!this.cusName || order.name.includes(this.cusName)) &&
         (!this.cusEmail || order.email.includes(this.cusEmail))
