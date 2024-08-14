@@ -122,9 +122,9 @@ export class HolderComponent {
   }
   setNav(){
     if (this.openTasksmenu){
-      this.navLevel1="Tasks"
+      this.navLevel1="Dashboard"
       if(this.selectMYTask){
-        this.navLevel2="My Tasks"
+        this.navLevel2="View"
       }else {
         this.navLevel2="Create New Tasks"
       }

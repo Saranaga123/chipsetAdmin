@@ -8,9 +8,9 @@
 <div style="height:90vh;float: left; width: 100%;background-color: rgb(194, 194, 194);">
   <div style="background-color:  rgb(134, 134, 134); float: left;width: 10%;height:90vh;padding-top: 10px;">
 
-    <div class="menuitem" (click)="openTasks()" ><span *ngIf="!openTasksmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openTasksmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Tasks</div>
+    <div class="menuitem" (click)="openTasks()" ><span *ngIf="!openTasksmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openTasksmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Dashboard</div>
     <div [ngClass]="{'subwrapper1open': openTasksmenu, 'subwrapper1': !openTasksmenu}" >
-      <div class="submenuitem" (click)="openMyTasks()" [ngClass]="{'menuitemselected': selectMYTask}">My Tasks</div>
+      <div class="submenuitem" (click)="openMyTasks()" [ngClass]="{'menuitemselected': selectMYTask}">View</div>
       <div class="submenuitem" (click)="opencreateTasks()" [ngClass]="{'menuitemselected': selectCreateTasks}">Create New Tasks</div>
     </div>
     <div class="menuitem" (click)="openOrders()" ><span *ngIf="!openOrdersmenu"><img src = "../../../assets/img/plus.png" style="width:22px"></span><span *ngIf="openOrdersmenu"><img src = "../../../assets/img/minus.png" style="width:22px"></span>Orders</div>

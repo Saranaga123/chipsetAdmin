@@ -46,6 +46,10 @@ import { CreateUserComponent } from './pages/popup/create-user/create-user.compo
 import { DeleteUserComponent } from './pages/popup/delete-user/delete-user.component';
 import { PasswordUpdateUserComponent } from './pages/popup/password-update-user/password-update-user.component';
 import { UpdateUserComponent } from './pages/popup/update-user/update-user.component';
+import { LineComponent } from './components/charts/line/line.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { BarComponent } from './components/charts/bar/bar.component';
+import { PieComponent } from './components/charts/pie/pie.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +83,10 @@ import { UpdateUserComponent } from './pages/popup/update-user/update-user.compo
     CreateUserComponent,
     DeleteUserComponent,
     PasswordUpdateUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    LineComponent,
+    BarComponent,
+    PieComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +104,8 @@ import { UpdateUserComponent } from './pages/popup/update-user/update-user.compo
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
   ],
   providers: [
     DatePipe,
